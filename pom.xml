@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ankhcraft.maven.plugins</groupId>
+  <artifactId>maven-gem-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <name>Maven Gem Plugin</name>
+  <version>0.1</version>
+  <description>Maven plugin for generating ruby gems.</description>
+  <inceptionYear>2009</inceptionYear>
+
+  <developers>
+    <developer>
+      <id>jkhoobyar</id>
+      <name>Joe Khoobyar</name>
+      <email>joe@ankhcraft.com</email>
+    </developer> 
+  </developers> 
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>2.5</version>
+        <executions>
+          <execution>
+            <id>help-mojo</id>
+            <goals>
+              <goal>helpmojo</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.0-beta-1</version>
+        <executions>
+          <execution>
+            <id>ensure-no-container-api</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <bannedDependencies>
+                  <excludes>
+                    <exclude>org.codehaus.plexus:plexus-component-api</exclude>
+                  </excludes>
+                  <message>The plexus-component-api conflicts with the plexus-container-default used by Maven. You probably added a dependency that is missing the exclusions.</message>
+                </bannedDependencies>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-help-plugin</artifactId>
+        <version>2.1</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>2.0</version>
+        <configuration>
+          <outputEncoding>UTF-8</outputEncoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build> 
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <requirements>
+            <jdk>1.5</jdk>
+          </requirements>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.1</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>cim</report>
+              <report>dependencies</report>
+              <report>dependency-convergence</report>
+              <report>dependency-management</report>
+              <report>index</report>
+              <report>issue-tracking</report>
+              <report>license</report>
+              <report>mailing-list</report>
+              <report>plugin-management</report>
+              <report>project-team</report>
+              <report>scm</report>
+              <report>summary</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <configLocation>config/maven_checks.xml</configLocation>
+          <headerLocation>config/maven-header.txt</headerLocation>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <quiet>true</quiet>
+          <links>
+            <link>http://java.sun.com/j2ee/1.4/docs/api</link>
+            <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
+            <link>http://commons.apache.org/collections/apidocs-COLLECTIONS_3_0/</link>
+            <link>http://commons.apache.org/dbcp/apidocs/</link>
+            <link>http://commons.apache.org/fileupload/apidocs/</link>
+            <link>http://commons.apache.org/httpclient/apidocs/</link>
+            <link>http://commons.apache.org/logging/apidocs/</link>
+            <link>http://commons.apache.org/pool/apidocs/</link>
+            <link>http://junit.sourceforge.net/javadoc/</link>
+            <link>http://logging.apache.org/log4j/1.2/apidocs/</link>
+            <link>http://jakarta.apache.org/regexp/apidocs/</link>
+            <link>http://velocity.apache.org/engine/releases/velocity-1.5/apidocs/</link>
+            <link>http://maven.apache.org/ref/current/maven-artifact/apidocs/</link>
+            <link>http://maven.apache.org/ref/current/maven-artifact-manager/apidocs/</link>
+            <link>http://maven.apache.org/ref/current/maven-model/apidocs/</link>
+            <link>http://maven.apache.org/ref/current/maven-plugin-api/apidocs/</link>
+            <link>http://maven.apache.org/ref/current/maven-project/apidocs/</link>
+            <link>http://maven.apache.org/ref/current/maven-reporting/maven-reporting-api/apidocs/</link>
+            <link>http://maven.apache.org/ref/current/maven-settings/apidocs/</link>
+          </links>
+          <tagletArtifacts>
+            <tagletArtifact>
+              <groupId>org.apache.maven.plugin-tools</groupId>
+              <artifactId>maven-plugin-tools-javadoc</artifactId>
+              <version>2.4.2</version>
+            </tagletArtifact>
+            <tagletArtifact>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-javadoc</artifactId>
+              <version>1.0</version>
+            </tagletArtifact>
+          </tagletArtifacts>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>javadoc</report>
+              <report>test-javadoc</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-archiver</artifactId>
+      <version>2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>1.5.9</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-archiver</artifactId>
+      <version>1.0-alpha-7</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.jruby</groupId>
+    	<artifactId>jruby-complete</artifactId>
+    	<version>1.3.1</version>
+    	<type>jar</type>
+    	<scope>runtime</scope>
+    </dependency>
+  </dependencies>
+</project>
