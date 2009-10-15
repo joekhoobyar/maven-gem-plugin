@@ -1,8 +1,13 @@
-This is purely in alpha status, right now it can do the following:
+This is purely in alpha status, right now it does the following:
 
- * Generate a gemspec purely from a Maven project
+ * Generate a gemspec purely from the information availabe in the Maven project
  * Generate a gem from a gemspec
+ * Provides packaging type "gem" with it's own default lifecycle bindings.
 
-It also intends to provide the following (incomplete):
+In the short-term, it also intends to provide the following (incomplete):
 
  * Resolution of gem artifacts from actual gem repositories, via Maven
+
+Long-term goals will be listed here shortly...
+
+- Joe Khoobyar <joe@ankhcraft.com>
