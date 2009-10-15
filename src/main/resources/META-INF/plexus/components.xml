@@ -25,6 +25,19 @@
           <install>org.apache.maven.plugins:maven-install-plugin:install</install>
           <deploy>org.apache.maven.plugins:maven-deploy-plugin:deploy</deploy>
         </phases>
+        <lifecycles>
+          <lifecycle>
+            <id>default</id>
+            <phases>
+              <process-resources>org.apache.maven.plugins:maven-resources-plugin:resources</process-resources>
+              <process-test-resources>org.apache.maven.plugins:maven-resources-plugin:testResources</process-test-resources>
+              <prepare-package>com.ankhcraft.maven.plugins:maven-gem-plugin:gemspec</prepare-package>
+              <package>com.ankhcraft.maven.plugins:maven-gem-plugin:gem</package>
+              <install>org.apache.maven.plugins:maven-install-plugin:install</install>
+              <deploy>org.apache.maven.plugins:maven-deploy-plugin:deploy</deploy>
+            </phases>
+          </lifecycle>
+        </lifecycles>
       </configuration>
     </component>
   </components>

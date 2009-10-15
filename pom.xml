@@ -37,6 +37,9 @@
       <email>joe@ankhcraft.com</email>
     </developer> 
   </developers> 
+  <prerequisites>
+    <maven>2.2.0</maven>
+  </prerequisites>
   <build>
     <plugins>
       <plugin>
