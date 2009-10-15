@@ -3,3 +3,6 @@ This is purely in alpha status, right now it can do the following:
  * Generate a gemspec purely from a Maven project
  * Generate a gem from a gemspec
 
+It also intends to provide the following (incomplete):
+
+ * Resolution of gem artifacts from actual gem repositories, via Maven
