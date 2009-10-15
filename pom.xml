@@ -26,7 +26,7 @@
   <artifactId>maven-gem-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>Maven Gem Plugin</name>
-  <version>0.1</version>
+  <version>0.1.1-SNAPSHOT</version>
   <description>Maven plugin for generating ruby gems.</description>
   <inceptionYear>2009</inceptionYear>
 
@@ -231,6 +231,7 @@
       <artifactId>plexus-archiver</artifactId>
       <version>1.0-alpha-7</version>
     </dependency>
+  <!--
     <dependency>
     	<groupId>org.jruby</groupId>
     	<artifactId>jruby-complete</artifactId>
@@ -238,5 +239,6 @@
     	<type>jar</type>
     	<scope>runtime</scope>
     </dependency>
+  -->
   </dependencies>
 </project>
