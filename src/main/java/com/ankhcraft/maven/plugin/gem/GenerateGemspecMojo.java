@@ -98,7 +98,7 @@ public class GenerateGemspecMojo
 		writeStringArray (sb, null, "authors", authors);
 		String binDir = getBinDir ();
 		if (binDir != null)
-			sb.append ("bindir: bin\n");
+			sb.append ("bindir: ").append (binDir).append ("\n");
 		sb.append ("cert_chain: []\n\n");
 		String date = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss Z").format (new Date ());
 		int n = date.length () - 2;
