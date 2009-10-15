@@ -10,40 +10,32 @@ import org.apache.maven.artifact.repository.layout.ArtifactRepositoryLayout;
  * @author jkhoobyar
  */
 public class GemRepositoryLayout
-    implements ArtifactRepositoryLayout
+	implements ArtifactRepositoryLayout
 {
-    private static final String PATH_SEPARATOR = "/";
+	private static final String PATH_SEPARATOR = "/";
 
-    public String pathOf( Artifact artifact )
-    {
-        ArtifactHandler artifactHandler = artifact.getArtifactHandler();
+	public String pathOf (Artifact artifact) {
+		ArtifactHandler artifactHandler = artifact.getArtifactHandler ();
 
-        StringBuffer path = new StringBuffer();
+		StringBuffer path = new StringBuffer ();
 
-        path.append( artifactHandler.getDirectory() ).append( PATH_SEPARATOR );
-        path.append( artifact.getArtifactId() ).append( '-' ).append( artifact.getVersion() );
+		path.append (artifactHandler.getDirectory ()).append (PATH_SEPARATOR);
+		path.append (artifact.getArtifactId ()).append ('-').append (artifact.getVersion ());
 
-        if ( artifact.hasClassifier() )
-        {
-            path.append( '-' ).append( artifact.getClassifier() );
-        }
+		if (artifact.hasClassifier ())
+			path.append ('-').append (artifact.getClassifier ());
+		if (artifactHandler.getExtension () != null && artifactHandler.getExtension ().length () > 0)
+			path.append ('.').append (artifactHandler.getExtension ());
 
-        if ( artifactHandler.getExtension() != null && artifactHandler.getExtension().length() > 0 )
-        {
-            path.append( '.' ).append( artifactHandler.getExtension() );
-        }
+		return path.toString ();
+	}
 
-        return path.toString();
-    }
+	public String pathOfLocalRepositoryMetadata (ArtifactMetadata metadata, ArtifactRepository repository) {
+		return "quick/" + metadata.getLocalFilename (repository);
+	}
 
-    public String pathOfLocalRepositoryMetadata( ArtifactMetadata metadata, ArtifactRepository repository )
-    {
-        return "quick/" + metadata.getLocalFilename (repository);
-    }
-
-    public String pathOfRemoteRepositoryMetadata( ArtifactMetadata metadata )
-    {
-        return "quick/" + metadata.getRemoteFilename ();
-    }
+	public String pathOfRemoteRepositoryMetadata (ArtifactMetadata metadata) {
+		return "quick/" + metadata.getRemoteFilename ();
+	}
 
 }

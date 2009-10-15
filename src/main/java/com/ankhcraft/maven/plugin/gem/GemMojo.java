@@ -13,11 +13,11 @@ import org.codehaus.plexus.archiver.tar.TarArchiver;
  * 
  * @goal gem
  * @requiresDependencyResolution runtime
- *
+ * 
  * @author Joe Khoobyar
  */
 public class GemMojo
-    extends AbstractGemMojo
+	extends AbstractGemMojo
 {
 
 	/**
@@ -29,7 +29,7 @@ public class GemMojo
 		tgz.addDirectory (new File (binSourceDirectory), "bin/", binIncludes, binExcludes);
 		tgz.addDirectory (new File (testSourceDirectory), "test/", testIncludes, testExcludes);
 		for (Object srcRoot : extraBaseDirectories)
-		    tgz.addDirectory (new File ((String) srcRoot));
+			tgz.addDirectory (new File ((String) srcRoot));
 	}
 
 }
