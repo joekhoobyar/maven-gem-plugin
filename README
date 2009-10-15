@@ -1,3 +1,5 @@
+=== OVERVIEW === 
+
 This is purely in alpha status, right now it does the following:
 
  * Generate a gemspec purely from the information availabe in the Maven project
@@ -9,5 +11,26 @@ In the short-term, it also intends to provide the following (incomplete):
  * Resolution of gem artifacts from actual gem repositories, via Maven
 
 Long-term goals will be listed here shortly...
+
+=== INSTALLATION ===
+
+Right now, this plugin requires Maven 2.2.1 or newer.
+
+To build with Maven and install to your local repository, simply run:
+
+      mvn install
+
+
+=== USAGE ===
+
+To use this plugin, add the following to your plugins section in your pom.xml:
+
+      <plugin>
+        <groupId>com.ankhcraft.maven.plugins</groupId>
+        <artifactId>maven-gem-plugin</artifactId>
+        <extensions>true</extensions>
+        <version>0.1</version>
+      </plugin>
+
 
 - Joe Khoobyar <joe@ankhcraft.com>
