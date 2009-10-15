@@ -1,0 +1,5 @@
+This is purely in alpha status, right now it can do the following:
+
+ * Generate a gemspec purely from a Maven project
+ * Generate a gem from a gemspec
+
